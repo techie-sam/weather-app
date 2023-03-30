@@ -2,12 +2,15 @@ import './App.css';
 import Nav from './components/Nav';
 import CurrentLocationWeather from './components/CurrentLocationWeather';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getCurrentLocationWeather } from './redux/getWeather';
 function App() {
+
+  const dispatch = useDispatch()
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(position=>{console.log(position)}, error=>{console.log(error)})
+    dispatch(getCurrentLocationWeather())
   })
   
-  // console.log(position)
   return (
     <>
       <Nav />
