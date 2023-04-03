@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import store from './redux/store';
-// import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
-// dotenv.config()
+import getTheme from './themes/theme';
+import { toggleTheme } from './redux/themeTogglerSlice';
 
-
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#fffff'
-    },
-  },
-});
+const mode = store.getState().themeToggleReducer.mode
+console.log(mode)
+const theme = getTheme(mode);
+// const theme = createTheme({
+//   palette: {
+//     primary: {
+//       main: '#000000'
+//     },
+//   },
+// });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
