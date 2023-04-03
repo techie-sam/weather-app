@@ -5,13 +5,14 @@ import { useSelector } from 'react-redux';
 import { PulseLoader } from 'react-spinners';
 
 const CurrentLocationWeather = () => {
-  const {loading} = useSelector(state=>state)
+  const {loading, locationName, countryName} = useSelector(state=>state.weatherReducer)
+
   return (
-    <div>
-       {
-        loading&&<PulseLoader color="#36d7b7" />
+    <>
+       {loading?<PulseLoader color="#36d7b7" />:
+       <div>{locationName} {countryName}</div>
        }
-    </div>
+    </>
   )
 }
 

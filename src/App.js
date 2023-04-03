@@ -13,8 +13,8 @@ function App() {
   const { data, loading, error } = useSelector(state => state)
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(toggleTheme())
     dispatch(fetchCurrentLocationWeather())
+    dispatch(toggleTheme())
   }, [])
 
   return (
@@ -24,8 +24,7 @@ function App() {
         <TextField type={'search'} label="Search for Location" m="auto" sx={{}} />
       </Box>
       <CurrentLocationWeather />
-      {loading && "loading"}
-      {data && data.data}
+
     </>
   );
 }

@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import reducer from "./slice";
+import weatherReducer from "./slice";
 import themeToggleReducer from "./themeTogglerSlice";
 // import reducer from "./reducers";
 
 const store = configureStore({
     reducer:{
-        reducer,
+        weatherReducer,
         themeToggleReducer
     }
 });

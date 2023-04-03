@@ -10,8 +10,8 @@ export const fetchCurrentLocationWeather = () => (dispatch) => {
             (position) => {
                 const { latitude, longitude } = position.coords;
                 console.log(latitude)
-                const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
-                fetch(url)
+                const endpoint = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+                fetch(endpoint)
                     .then((response) => response.json())
                     .then((data) =>
                         dispatch(fetchCurrentWeatherSuccess(data))

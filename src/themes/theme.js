@@ -4,7 +4,7 @@ const getTheme = (mode) => {
     const palette = {
         mode,
         primary: {
-            main: mode === 'light' ? '#000000' : '#000000',
+            main: mode === 'light' ? '#fffff' : '#90caf9',
         },
         secondary: {
             main: mode === 'light' ? '#dc004e' : '#f48fb1',
