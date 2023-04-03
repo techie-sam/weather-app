@@ -12,7 +12,7 @@ const Nav = () => {
     return (
         <>    
 
-            <Box sx={{ flexGrow: 1 }}>
+            <Box sx={{ flexGrow: 1,}} mb={4} >
                 <AppBar position="static">
                     <Toolbar>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>

@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
-import { createTheme } from '@mui/material';
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+// import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+// dotenv.config()
+
 
 
 const theme = createTheme({

@@ -1,28 +1,27 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { fetchCurrentWeatherRequest, fetchCurrentWeatherSuccess, fetchCurrentWeatherFailure } from "./slice";
 
-// require('dotenv').config();
-const API_key = "d";
-const initialState = {
-    endpoint: `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=${API_key}`,
-    longitude: null,
-    latitude: null,
-}
-export const getWeather = createSlice({
-    name:"getWeather",
-    initialState,
-    reducers: {
-        getCurrentLocationWeather: () => {
-            navigator.geolocation.getCurrentPosition(position => {
-                console.log(position)
+
+const apiKey = process.env.REACT_APP_API_KEY;
+export const fetchCurrentLocationWeather = () => (dispatch) => {
+    dispatch(fetchCurrentWeatherRequest());
+  
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const { latitude, longitude } = position.coords;
+                const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+                fetch(url)
+                    .then((response) => response.json())
+                    .then((data) =>
+                        dispatch(fetchCurrentWeatherSuccess(data))
+                    )
+                    .catch((error) =>
+                        dispatch(fetchCurrentWeatherFailure(error))
+                    );
             },
-                error => { 
-                    console.log(error)
-                })
-        }
-
+            (error) => dispatch(fetchCurrentWeatherFailure(error))
+        );
+    } else {
+        dispatch(fetchCurrentWeatherFailure("Browser does not support using location"));
     }
-})
-
-export default getWeather.reducer;
-export const { getCurrentLocationWeather } = getWeather.actions;
-
+  };

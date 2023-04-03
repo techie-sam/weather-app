@@ -1,10 +1,16 @@
-import { TextField } from '@mui/material'
+
 import React from 'react'
+import CircularProgress from '@mui/material/CircularProgress';
+import { useSelector } from 'react-redux';
+import { PulseLoader } from 'react-spinners';
 
 const CurrentLocationWeather = () => {
+  const {loading} = useSelector(state=>state)
   return (
     <div>
-        <TextField type={'search'}/>
+       {
+        loading&&<PulseLoader color="#36d7b7" />
+       }
     </div>
   )
 }
