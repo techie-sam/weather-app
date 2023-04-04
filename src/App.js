@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import Nav from './components/Nav';
 import CurrentLocationWeather from './components/CurrentLocationWeather';
 import { useEffect, useState } from 'react';
@@ -8,9 +8,6 @@ import { fetchCurrentLocationWeather } from './redux/getWeather';
 import { toggleTheme } from './redux/themeTogglerSlice';
 
 function App() {
-  const themer = "meee"
-  const { theme, setTheme } = useState("dark")
-  const { data, loading, error } = useSelector(state => state)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchCurrentLocationWeather())
