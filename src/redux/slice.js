@@ -25,14 +25,11 @@ export const weatherSlice = createSlice({
       const {name, sys:{country}, weather:[desc], main:{temp}} = action.payload
       const {main, description} = desc
       console.log(name, temp, country, main)
-        // action.type= "ola"
-        // console.log(action)
       state.loading = false;
-      // state.data = action.payload;
       state.locationName = name
       state.countryName = country
       state.error = null;
-      state.temperature= temp+"°C"
+      state.temperature= Math.round(temp)+"°C"
       state.description = description
     },
     fetchCurrentWeatherFailure: (state, action) => {

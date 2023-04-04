@@ -9,9 +9,9 @@ const CurrentLocationWeather = () => {
   const currentDate = new Date().toDateString();
   return (
     <>
+      <small>{currentDate},</small>
       <h1>{temperature}</h1>
-      <small>{description}</small><br></br>
-      <>{currentDate},</>
+      <div>{description}</div>
       {loading ? <PulseLoader color="#36d7b7" /> :
         <h2 style={{ margin: "0" }}>{locationName} {countryName}</h2>
       }

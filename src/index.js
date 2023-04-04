@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-// import reportWebVitals from './reportWebVitals';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Provider, useSelector } from 'react-redux';
 import store from './redux/store';
@@ -12,13 +11,6 @@ import { toggleTheme } from './redux/themeTogglerSlice';
 const mode = store.getState().themeToggleReducer.mode
 console.log(mode)
 const theme = getTheme(mode);
-// const theme = createTheme({
-//   palette: {
-//     primary: {
-//       main: '#000000'
-//     },
-//   },
-// });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
