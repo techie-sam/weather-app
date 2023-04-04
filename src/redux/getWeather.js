@@ -20,7 +20,7 @@ export const fetchCurrentLocationWeather = () => (dispatch) => {
                         dispatch(fetchCurrentWeatherFailure(error))
                     );
             },
-            (error) => dispatch(fetchCurrentWeatherFailure(error))
+            ({message}) => dispatch(fetchCurrentWeatherFailure(message))
         );
     } else {
         dispatch(fetchCurrentWeatherFailure("Browser does not support using location"));
