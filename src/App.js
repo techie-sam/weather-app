@@ -4,8 +4,9 @@ import CurrentLocationWeather from './components/Main';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TextField, Box, Grid } from '@mui/material'
-import { fetchCurrentLocationWeather, fetchOtherDaysWeather } from './redux/getWeather';
+import { fetchCurrentLocationWeather, fetchOtherDaysWeather, fetchWeatherByUserInput } from './redux/getWeather';
 import { toggleTheme } from './redux/themeTogglerSlice';
+import { fetchPreferredCity } from './redux/slice';
 
 function App() {
   const dispatch = useDispatch()
@@ -18,7 +19,8 @@ function App() {
     <Box height="100vh" backgroundColor="primary.main" >
       <Nav />
       <Box display="flex" justifyContent="center">
-        <TextField type={'search'} label="Search for Location" m="auto" sx={{}} />
+        <TextField type={'search'} label="Search for Location" m="auto" onChange={(e)=>dispatch(fetchPreferredCity(e.target.value))} />
+        <button onClick={()=>dispatch(fetchWeatherByUserInput())}>SEARCH</button>
       </Box>
       <Grid container margin='auto' >
         <Grid item xs='12' md='6' margin='auto'>

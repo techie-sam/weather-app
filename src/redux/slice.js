@@ -9,7 +9,8 @@ const initialState = {
   temperature: null,
   description: null,
   humidity: null,
-  windSpeed: null
+  windSpeed: null,
+  cityName:null
 };
 
 
@@ -43,10 +44,13 @@ export const weatherSlice = createSlice({
       state.loading = false;
       console.log(action.payload)
     },
+    fetchPreferredCity: (state, action)=>{
+      state.cityName = action.payload
+    }
   },
 });
 
-export const { fetchCurrentWeatherRequest, fetchCurrentWeatherSuccess,  fetchCurrentWeatherFailure } = weatherSlice.actions;
+export const { fetchCurrentWeatherRequest, fetchCurrentWeatherSuccess,  fetchCurrentWeatherFailure, fetchPreferredCity } = weatherSlice.actions;
 
 
 export default weatherSlice.reducer;
