@@ -1,6 +1,6 @@
 // import './App.css';
 import Nav from './components/Nav';
-import CurrentLocationWeather from './components/CurrentDayWeather';
+import CurrentLocationWeather from './components/Main';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TextField, Box, Grid } from '@mui/material'
