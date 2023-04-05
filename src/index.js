@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+// import reportWebVitals from './reportWebVitals';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Provider, useSelector } from 'react-redux';
 import store from './redux/store';

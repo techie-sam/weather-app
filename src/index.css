@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-color: rgb(226, 225, 225); */
+
 }
 
 code {
@@ -13,4 +15,25 @@ code {
 }
 h1, h1 h3, h4, h5, h6{
   margin: 0;
+}
+.icon {
+  /* Set the filter property to the grayscale function */
+  filter: grayscale(100%);
+  animation: move infinite 20s linear;
+}
+
+@keyframes move {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: rotate(20px);
+  }
+}
+.spinner{
+  position: absolute;
+  left: 50;
+  right:50;
+  top:50;
+  bottom: 50;
 }
