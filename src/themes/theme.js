@@ -16,11 +16,11 @@ const getTheme = (mode) => {
         // fontWeightRegular: 400,
         // fontWeightMedium: 500,
         // fontWeightBold: 700,
-        // h1: {
-        //     fontSize: '5rem',
-        //     fontWeight: 500,
-        //     lineHeight: 1.2,
-        // },
+        h1: {
+            fontSize: 'rem',
+            fontWeight: 500,
+            lineHeight: 1.2,
+        },
         // h2: {
         //     fontSize: '2.25rem',
         //     fontWeight: 500,

@@ -8,6 +8,7 @@ export const fetchCurrentLocationWeather = () => (dispatch) => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             (position) => {
+                dispatch(fetchCurrentWeatherFailure(false))
                 const { latitude, longitude } = position.coords;
                 console.log(latitude)
                 const endpoint = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;

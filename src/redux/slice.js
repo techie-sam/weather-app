@@ -23,9 +23,12 @@ export const weatherSlice = createSlice({
     fetchCurrentWeatherSuccess: (state, action) => {
       console.log(action)
       const {name, sys:{country}, weather:[desc], main:{temp}} = action.payload
-      const {main, description} = desc
-      console.log(name, temp, country, main)
-      state.loading = false;
+      const {main, description, icon} = desc
+      console.log(name, temp, country, main, icon)
+      
+      state.iconUrl = `http://openweathermap.org/img/w/${icon}.png`
+      state.loading = false
+      state.condition = main
       state.locationName = name
       state.countryName = country
       state.error = null;
@@ -34,8 +37,8 @@ export const weatherSlice = createSlice({
     },
     fetchCurrentWeatherFailure: (state, action) => {
       state.loading = false;
-      state.error = action.payload;
-      console.log(state.error)
+      // state.error = action.payload;
+      console.log(action.payload)
     },
   },
 });
