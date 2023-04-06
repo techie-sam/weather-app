@@ -9,9 +9,9 @@ const CurrentLocationWeather = () => {
 
   const currentDate = new Date().toDateString();
   return (
-  
     <Grid container margin='auto' >
       <Grid item xs={12} sm={10} margin="auto">
+          <div> {error&& error}</div>
         <Box padding='40px' height="">
 
             {loading ? <PacmanLoader color="#000000" /> :

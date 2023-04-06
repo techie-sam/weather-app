@@ -10,6 +10,7 @@ const initialState = {
   description: null,
   humidity: null,
   windSpeed: null,
+  cityName:null,
   cityName:null
 };
 
@@ -18,17 +19,17 @@ export const weatherSlice = createSlice({
   name: 'weather',
   initialState,
   reducers: {
-    fetchCurrentWeatherRequest: (state) => {
+    fetchWeatherRequest: (state) => {
       state.loading = true;
       state.error = null;
       console.log("Hello")
     },
-    fetchCurrentWeatherSuccess: (state, action) => {
+    fetchWeatherSuccess: (state, action) => {
       console.log(action)
-      const {name, sys:{country}, weather:[desc], wind:{speed}, main:{temp, humidity}} = action.payload
+      const {name,message,  sys:{country}, weather:[desc], wind:{speed}, main:{temp, humidity}} = action.payload
+      console.log(message);
       const {main, description, icon} = desc
       console.log(name, temp, country, main, icon)
-      
       state.iconUrl = `http://openweathermap.org/img/w/${icon}.png`;
       state.loading = false;
       state.condition = main;
@@ -40,8 +41,9 @@ export const weatherSlice = createSlice({
       state.humidity = humidity;
       state.windSpeed = speed
     },
-    fetchCurrentWeatherFailure: (state, action) => {
+    fetchWeatherFailure: (state, action) => {
       state.loading = false;
+      state.error = action.payload
       console.log(action.payload)
     },
     fetchPreferredCity: (state, action)=>{
@@ -50,7 +52,7 @@ export const weatherSlice = createSlice({
   },
 });
 
-export const { fetchCurrentWeatherRequest, fetchCurrentWeatherSuccess,  fetchCurrentWeatherFailure, fetchPreferredCity } = weatherSlice.actions;
+export const { fetchWeatherRequest, fetchWeatherSuccess,  fetchWeatherFailure, fetchPreferredCity } = weatherSlice.actions;
 
 
 export default weatherSlice.reducer;

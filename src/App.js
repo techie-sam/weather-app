@@ -14,13 +14,15 @@ function App() {
     dispatch(fetchCurrentLocationWeather())
     dispatch(toggleTheme())
   }, [])
+ const{ error } = useSelector(state => state.weatherReducer)
 
   return (
     <Box height="100vh" backgroundColor="primary.main" >
       <Nav />
       <Box display="flex" justifyContent="center">
         <TextField type={'search'} label="Search for Location" m="auto" onChange={(e)=>dispatch(fetchPreferredCity(e.target.value))} />
-        <button onClick={()=>dispatch(fetchWeatherByUserInput())}>SEARCH</button>
+        <buittton onClick={()=>dispatch(fetchWeatherByUserInput())}>SEARCH</buittton>
+        <div> {error&& error}</div>
       </Box>
       <Grid container margin='auto' >
         <Grid item xs='12' md='6' margin='auto'>
